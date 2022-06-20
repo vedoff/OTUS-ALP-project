@@ -1,0 +1,5 @@
+---
+# handlers file for selinux
+- name: restart system
+  reboot:
+    reboot_command: shutdown -r 0

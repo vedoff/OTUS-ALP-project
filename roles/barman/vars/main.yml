@@ -1,0 +1,7 @@
+---
+# vars file for barman
+PasswordAuthentication: 'yes'
+
+## Переменные серверов
+host_pgnode_m: '192.168.56.51'
+slot_name: 'sshbarman_pgnode_m'

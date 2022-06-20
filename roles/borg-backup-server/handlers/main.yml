@@ -1,0 +1,6 @@
+---
+# handlers file for configure-borg-backup-server
+- name: ssh restart
+  systemd:
+    name: sshd
+    state: restarted

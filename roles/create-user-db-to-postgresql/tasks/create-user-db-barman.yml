@@ -1,0 +1,43 @@
+## Создаем пользователя barman в базе postgresql
+- name: Create barman user
+  postgresql_user:
+    name: barman
+    encrypted: yes
+    password: 1qaz2wsx
+    role_attr_flags: SUPERUSER
+
+## Создаем пользователя streaming_barman в базе postgresql
+- name: Create barman user
+  postgresql_user:
+    name: streaming_barman 
+    encrypted: yes
+    password: 1qaz2wsx
+    role_attr_flags: REPLICATION
+
+# ## Создаем базу postgresql
+# - name: create db postgresql
+#   postgresql_db:
+#     name: zabbix
+#     encoding: UTF-8
+#     template: template0
+
+# - name: Create a new database with name "acme" and specific encoding and locale # settings.
+#   postgresql_db:
+#     name: acme
+#     encoding: UTF-8
+#     # lc_collate: de_DE.UTF-8
+#     # lc_ctype: de_DE.UTF-8
+#     template: template0
+
+# Connect to default database, create rails user, set its password (MD5-hashed),
+# and grant privilege to create other databases and demote rails from super user status if user exists
+# - name: Create rails user, set MD5-hashed password, grant privs
+#   postgresql_user:
+#     name: rails
+#     password: md59543f1d82624df2b31672ec0f7050460
+#     role_attr_flags: CREATEDB,NOSUPERUSER
+
+# - name: create data to db zabbix
+#   command:
+#     cmd: zcat /usr/share/doc/zabbix-sql-scripts/postgresql/server.sql.gz | psql -h 192.168.56.51 zabbix zabbix
+#     cmd: zcat /usr/share/doc/zabbix-server-pgsql/postgresql/create.sql.gz | psql -h 192.168.56.51 zabbix zabbix/create.sql.gz | psql -h 192.168.56.51 zabbix zabbix 

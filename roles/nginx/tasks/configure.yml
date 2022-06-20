@@ -1,0 +1,41 @@
+## Шаблон конфигурации NGINX
+- name: Template for NGINX
+  template:
+      src: nginx.j2
+      dest: /etc/nginx/nginx.conf
+
+## Создание директории виртуального домена
+- name: Create folder for domain site
+  file:
+    path: /etc/nginx/conf.d/
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+    state: directory
+
+## Шаблон конфигурации виртуального домена      
+- name: Templte for domain
+  template:
+      src: odoo.j2
+      dest: /etc/nginx/conf.d/odoo.conf
+  notify: nginx restart service
+
+# ## Создание директории виртуального домена
+# - name: Create folder for domain site
+#   file:
+#     path: /etc/nginx/conf.d/
+#     owner: "{{ ansible_user }}"
+#     group: "{{ ansible_user }}"
+#     mode: '0755'
+#     state: directory
+
+# ## Копирование файла в дерикторию сайта
+# - name: Copy file home-site.local
+#   copy:
+#     src: index.html
+#     dest: /var/www/{{ virtual_domain }}
+#     owner: "{{ ansible_user }}"
+#     group: "{{ ansible_user }}"
+#     mode: '0644'
+#   notify:
+#     - nginx restart service

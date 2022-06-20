@@ -1,0 +1,28 @@
+---
+- name: configure rsyslog.d.conf odoo
+  copy:
+    src: odoo.conf
+    dest: /etc/rsyslog.d/
+  when: (ansible_hostname == "odoo")
+  notify: restart-rsyslog
+
+- name: configure rsyslog.d.conf postgresql "pgnode"
+  copy:
+    src: postgresql.conf
+    dest: /etc/rsyslog.d/
+  when: (ansible_hostname == "pgnode")
+  notify: restart-rsyslog
+
+- name: configure rsyslog.d.conf  backup
+  copy:
+    src: backup.conf
+    dest: /etc/rsyslog.d/
+  when: (ansible_hostname == "backup")
+  notify: restart-rsyslog
+
+- name: configure rsyslog.d.conf  barman
+  copy:
+    src: barman.conf
+    dest: /etc/rsyslog.d/
+  when: (ansible_hostname == "barman")
+  notify: restart-rsyslog

@@ -1,0 +1,6 @@
+---
+- hosts: barman
+  become: yes
+  #remote_user: postgres
+  roles:
+    - barman

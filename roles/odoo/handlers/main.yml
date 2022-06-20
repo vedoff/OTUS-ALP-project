@@ -1,0 +1,6 @@
+---
+# handlers file for odoo
+- name: restart odoo
+  systemd:
+    name: odoo
+    state: restarted

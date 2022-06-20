@@ -1,0 +1,14 @@
+---
+- hosts: 
+    - postgre
+    - odoo
+    - backup
+    - srv-log
+    - barman
+    - bastion
+    - postgre-s
+  become: yes
+  #remote_user: postgres
+  roles:
+    - epel
+    - zabbix-agent

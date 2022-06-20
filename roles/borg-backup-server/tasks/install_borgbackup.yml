@@ -1,0 +1,8 @@
+---
+- name: install_borgbackup
+  yum:
+    name: 
+      - borgbackup
+      - mc
+    state: latest
+  

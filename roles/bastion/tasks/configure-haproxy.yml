@@ -1,0 +1,12 @@
+## Шаблон конфигурации виртуального домена      
+- name: copy cert haproxy
+  copy:
+    src: odoo.pem
+    dest: /etc/ssl/certs/
+
+- name: Templte for haproxy
+  template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+  notify: restart-haproxy
+

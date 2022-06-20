@@ -1,0 +1,4 @@
+---
+# vars file for selinux
+selinux_param: enforcing
+se_port: '8069'

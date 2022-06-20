@@ -1,0 +1,19 @@
+- name: remove data dir postgres slave
+  file:
+    path: /var/lib/postgresql/13/main/
+    state: absent
+  when: (ansible_hostname == "pgnode-s")
+
+## Создание директории виртуального домена
+- name: Create folder for postgresql main
+  file:
+    path: /var/lib/postgresql/13/main
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0700'
+    state: directory
+
+# - name: configure replication slot 
+#   command:
+#     cmd: "pg_basebackup -h 192.168.56.51 -D /var/lib/postgresql/13/main -U replication -P -v -R -X stream -C -S pgstandby1"
+#   when: (ansible_hostname == "pgnode-s")

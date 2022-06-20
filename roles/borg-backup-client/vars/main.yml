@@ -1,0 +1,4 @@
+---
+# vars file for configure-borg-backup-client
+identityfile_borg: 'IdentityFile ~/.ssh/borg-key'
+GSSAPIAuthentication: 'no'

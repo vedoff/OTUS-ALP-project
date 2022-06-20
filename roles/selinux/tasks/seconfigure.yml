@@ -1,0 +1,23 @@
+---
+## Выполняем команду проверки состояния Selinux на хосте
+## пишем результат в переменную "selstat"
+- name: Selinux On or OFF
+  shell: getenforce
+  register: selstat
+
+## Выводим сообщение об изменении состояния Selinux
+- name: Debug stdout
+  debug:
+    msg: "Состояние Selinux изменено на Enforcing"
+  when:
+    selstat.stdout == 'Disabled'
+
+# Включаем SElinux используя шаблон
+- name: Configure SElinux enforcing
+  template:
+    src: seconfig.j2
+    dest: /etc/selinux/config
+  when:
+    selstat.stdout == 'Disabled'
+  notify:
+    - restart system

@@ -1,0 +1,21 @@
+server {
+    listen       {{ domain_port }};
+    #server_name  {{ virtual_domain }} www.{{ virtual_domain }};
+
+
+    access_log /var/log/nginx/{{ virtual_domain }}_access_log;
+    error_log /var/log/nginx/{{ virtual_domain }}_error_log;
+
+    error_log syslog:server={{ log_server_ip }}:{{ log_port }},tag=nginx_error;
+    access_log syslog:server={{ log_server_ip }}:{{ log_port }},tag=nginx_access,severity=info combined;
+
+    location / {
+        proxy_pass          http://192.168.56.50:8069;
+        proxy_set_header   Host             $host;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+    }
+    
+    
+}

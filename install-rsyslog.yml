@@ -1,0 +1,14 @@
+---
+#Конфигурим сервер app
+- hosts: srv-log
+  become:
+    true
+  roles:
+    - rsyslog-server
+
+# # Конфигурим сервер баз данных
+# - hosts: postgre
+#   become:
+#     true
+#   roles:
+#     - rsyslog-client

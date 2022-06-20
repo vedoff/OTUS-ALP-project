@@ -1,0 +1,6 @@
+---
+- hosts: zabbix
+  become: yes
+  #remote_user: postgres
+  roles:
+    - zabbix-server

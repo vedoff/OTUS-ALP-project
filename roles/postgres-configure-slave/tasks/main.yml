@@ -1,0 +1,4 @@
+---
+# tasks file for postgres-create-slave
+- name: import create-slot-pg-slave.yml
+  import_tasks: create-slot-pg-slave.yml

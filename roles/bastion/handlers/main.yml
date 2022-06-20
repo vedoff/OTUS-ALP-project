@@ -1,0 +1,26 @@
+---
+## iptables start
+- name: start-iptables-services
+  systemd:
+    name: iptables
+    enabled: yes
+    state: started
+
+## iptables restart
+- name: restart-iptables-services
+  systemd:
+    name: iptables
+    state: restarted
+
+## Nginx start
+- name: start-haproxy
+  systemd:
+    name: haproxy
+    enabled: yes
+    state: started
+
+## Nginx restart
+- name: restart-haproxy
+  systemd:
+    name: haproxy
+    state: restarted

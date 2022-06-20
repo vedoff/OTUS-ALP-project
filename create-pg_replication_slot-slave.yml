@@ -1,0 +1,6 @@
+---
+- hosts: postgre-s
+  #become: yes
+  remote_user: postgres
+  roles:
+    - postgres-configure-slave

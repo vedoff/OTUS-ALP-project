@@ -1,0 +1,25 @@
+# Конфигурим zabbix сервер
+## Создаем директорию для конфигов
+- name: create folder zabbix-server.conf.d
+  file:
+    path: /etc/zabbix/zabbix_server.conf.d
+    owner: "root"
+    group: "root"
+    mode: '0755'
+    state: directory
+    
+## Устанваливаем параметры конфига, используя шаблон j2
+## Конфигурим zabbix_server.conf
+- name: configure zabbix_server.conf
+  template:
+    src: zabbix_server.conf.j2
+    dest: /etc/zabbix/zabbix_server.conf
+
+## Конфигурим apache.conf
+- name: configure zabbix_server.conf
+  template:
+    src: apache.conf.j2
+    dest: /etc/zabbix/apache.conf
+  notify: 
+    - start zabbix-server
+    - restart apache2

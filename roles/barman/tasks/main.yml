@@ -1,0 +1,23 @@
+---
+# tasks file for barman
+- name: import install-barman.yml
+  import_tasks: install-barman.yml
+  tags: install
+
+- name: import add-password-user-barman.yml
+  import_tasks: add-password-user-barman.yml
+  tags: addpass
+
+- name: import configure-barman.yml
+  import_tasks: configure-barman.yml
+  tags: config
+
+- name: import configure-sshd_config-barman.yml
+  import_tasks: configure-sshd_config-barman.yml
+  tags: sshd
+
+- name: import add-pgpass.yml
+  import_tasks: add-pgpass.yml
+  tags: pgpass
+
+  

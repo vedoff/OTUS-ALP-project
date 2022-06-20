@@ -1,0 +1,16 @@
+- name: configure-iptables
+  template:
+    src: iptables.j2
+    dest: /etc/sysconfig/iptables
+  notify: restart-iptables-services
+
+- name: set up forward packages across routers
+  sysctl:
+    name: net.ipv4.conf.all.forwarding
+    value: '1'
+    state: present
+
+# - name: restore-iptables-rules
+#   command:
+#     cmd: 'iptables-restore < /etc/sysconfig/iptables'
+#   notify: restart-iptables-services

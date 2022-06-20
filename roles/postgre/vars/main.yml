@@ -1,0 +1,8 @@
+---
+# vars file for postgre
+PasswordAuthentication: 'yes'
+wal_level: 'replica'
+archive_mode: 'on'
+archive_command: 'rsync -a %p barman@192.168.56.58:/var/lib/barman/pgnode-m/incoming/%f'
+archive_timeout: '0'
+user: postgres

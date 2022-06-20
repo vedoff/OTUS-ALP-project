@@ -1,0 +1,13 @@
+---
+# tasks file for iptables
+- name: install services
+  import_tasks: install-services.yml
+  tags: install
+
+- name: configure-iptables
+  import_tasks: configure-iptables.yml
+  tags: configure
+
+- name: configure-haproxy
+  import_tasks: configure-haproxy.yml
+  tags: haproxy

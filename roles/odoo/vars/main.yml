@@ -1,0 +1,6 @@
+---
+# vars file for odoo
+db_host: "192.168.56.51"
+db_port: "5432"                                                                                                                                                     
+db_user: "odoo"                                                                                                                                                          
+db_password: "123456"

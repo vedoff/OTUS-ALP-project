@@ -1,0 +1,5 @@
+## Инициализируем базу данных zabbix
+- name: inicialize data base zabbix
+  command:
+    cmd: zcat /usr/share/doc/zabbix-server-pgsql/create.sql.gz | psql -h "{{ DBHost }}" zabbix zabbix
+    

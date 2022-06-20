@@ -1,0 +1,5 @@
+---
+# vars file for zabbix-client
+Server: '192.168.56.57'
+ServerActive: '192.168.56.57'
+Hostname: '{{ ansible_hostname }}'

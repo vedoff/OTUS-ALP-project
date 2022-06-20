@@ -1,0 +1,6 @@
+- name: Install utils for Selinux
+  yum:
+    name: 
+      - policycoreutils-python
+      - setools-console
+      - policycoreutils-newrole

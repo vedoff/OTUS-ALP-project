@@ -1,0 +1,22 @@
+- name: apt install dep
+  apt:
+    name: gnupg2
+    update_cache: yes
+
+## Установка епозитория
+- name: install repo list
+  copy:
+    src: pgdg.list
+    dest: /etc/apt/sources.list.d/
+
+## Установка ключа репозитория
+- apt_key:
+    url: "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
+    state: present
+
+# Установка сервера postgresql
+- name: Install postgresql-server
+  apt:
+    name: postgresql-13
+    state: latest
+    update_cache: yes

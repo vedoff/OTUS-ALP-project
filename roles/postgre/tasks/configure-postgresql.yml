@@ -1,0 +1,29 @@
+## ============== Конфигурим мастер ноду postgresql ==============
+- name: configure postgresql-server pg_hba.conf
+  template:
+    src: pgnode-m/pg_hba.conf.j2
+    dest: /etc/postgresql/13/main/pg_hba.conf
+  when: (ansible_hostname == "pgnode")
+  notify: reload postgresql
+
+- name: configure postgresql-server postgresql.conf
+  template:
+    src: pgnode-m/postgresql.conf.j2
+    dest: /etc/postgresql/13/main/postgresql.conf
+  when: (ansible_hostname == "pgnode")
+  notify: reload postgresql
+
+## =============== Конфигурим слейв ноду postgresql ================
+- name: configure postgresql-server pg_hba.conf
+  template:
+    src: pgnode-s/pg_hba.conf.j2
+    dest: /etc/postgresql/13/main/pg_hba.conf
+  when: (ansible_hostname == "pgnode-s")
+  notify: reload postgresql
+
+- name: configure postgresql-server postgresql.conf
+  template:
+    src: pgnode-s/postgresql.conf.j2
+    dest: /etc/postgresql/13/main/postgresql.conf
+  when: (ansible_hostname == "pgnode-s")
+  notify: reload postgresql

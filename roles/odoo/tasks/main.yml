@@ -1,0 +1,4 @@
+---
+# tasks file for odoo
+- name: install odoo
+  import_tasks: install-odoo.yml

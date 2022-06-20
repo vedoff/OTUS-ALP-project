@@ -1,0 +1,8 @@
+## Добавляем файл паролей подключения к базе postgrqsql
+- name: add .pgpass
+  copy:
+    src: .pgpass
+    dest: /home/vagrant/
+    owner: vagrant
+    group: vagrant
+    mode: '0600'

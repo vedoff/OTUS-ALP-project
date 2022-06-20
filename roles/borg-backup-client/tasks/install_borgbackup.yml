@@ -1,0 +1,6 @@
+---
+- name: install_borgbackup
+  apt:
+    name: borgbackup
+    state: latest
+  

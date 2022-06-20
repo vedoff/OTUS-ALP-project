@@ -1,0 +1,10 @@
+---
+- name: Inclide vars
+  include_vars: "{{ ansible_os_family }}.yml"
+
+## Подключаем файл установки NGINX
+- name: Import install tasks nginx
+  import_tasks: install.yml
+## Подключаем файл конфигурации NGINX
+- name: Import configure file nginx
+  import_tasks: configure.yml

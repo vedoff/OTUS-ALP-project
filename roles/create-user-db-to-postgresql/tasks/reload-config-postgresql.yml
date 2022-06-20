@@ -1,0 +1,16 @@
+# Применение конфига после изменения
+- name: reload config postgresql
+  postgresql_query:
+    query: SELECT pg_reload_conf();
+
+
+
+# - name: Select query to db acme with positional arguments and non-default credentials
+#   postgresql_query:
+#     db: acme
+#     login_user: django
+#     login_password: mysecretpass
+#     query: SELECT * FROM acme WHERE id = %s AND story = %s
+#     positional_args:
+#     - 1
+#     - test

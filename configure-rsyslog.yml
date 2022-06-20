@@ -1,0 +1,18 @@
+---
+#Конфигурим сервер app
+- hosts: 
+    - odoo
+    - postgre
+    - backup
+    - barman
+  become:
+    true
+  roles:
+    - rsyslog
+
+# # Конфигурим сервер баз данных
+# - hosts: postgre
+#   become:
+#     true
+#   roles:
+#     - rsyslog-client

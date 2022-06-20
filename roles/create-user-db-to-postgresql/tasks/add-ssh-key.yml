@@ -1,0 +1,22 @@
+- name: create ssh folder
+  file:
+    path: /var/lib/postgresql/.ssh
+    owner: postgres
+    group: postgres
+    state: directory
+    mode: '0700'
+
+    
+- name: add aah key to postgresql user
+  copy:
+    src: authorized_keys
+    dest: /var/lib/postgresql/.ssh
+    owner: postgres
+    group: postgres
+    mode: '0644'
+
+# - name: Set authorized key taken from file
+#   ansible.posix.authorized_key:
+#     user: charlie
+#     state: present
+#     key: "{{ lookup('file', '/home/charlie/.ssh/id_rsa.pub') }}"

@@ -1,0 +1,13 @@
+---
+## Рестарт ssh service 
+- name: ssh restart
+  systemd:
+    name: sshd
+    state: restarted
+
+## Стартуем borg-timer
+- name: borg-timer start service
+  systemd:
+    name: borg-backup.timer
+    enabled: yes
+    state: started 

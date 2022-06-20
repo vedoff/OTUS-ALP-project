@@ -1,0 +1,8 @@
+---
+- hosts: bastion
+  become: yes
+  #remote_user: postgres
+  roles:
+    - bastion
+    - selinux
+    - nginx

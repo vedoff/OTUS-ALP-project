@@ -1,0 +1,6 @@
+## Конфигурируем сервис ssh на сервере barman
+- name: configure sshd_conf
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+  notify: restart-sshd

@@ -1,0 +1,7 @@
+---
+# vars file for configure-borg-backup-server
+owner_borg: 'borg'
+group_borg: 'borg'
+GSSAPIAuthentication: 'no'
+GSSAPICleanupCredentials: 'no'
+PasswordAuthentication: 'yes'

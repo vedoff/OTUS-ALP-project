@@ -1,0 +1,12 @@
+- name: install-iptables-services
+  package:
+    name: 
+      - iptables-services
+      - mc
+      - tcpdump
+      - iftop
+      - haproxy
+    state: present
+  notify: 
+    - start-iptables-services
+    - start-haproxy

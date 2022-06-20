@@ -1,0 +1,6 @@
+## создаем слот репликачии и синхронизируем базы
+- name: configure replication slot 
+  command:
+    cmd: "pg_basebackup -h '{{ pgnode_m_ip }}' -D /var/lib/postgresql/13/main -U replication -P -v -R -X stream -C -S pgstandby1"
+  when: (ansible_hostname == "pgnode-s")
+  notify: restart postgresql

@@ -1,0 +1,6 @@
+---
+- hosts: odoo
+  become:
+    true
+  roles:
+    - borg-backup-client

@@ -1,0 +1,17 @@
+---
+# handlers file for postgre
+- name: start postgre
+  systemd:
+    name: postgresql
+    enabled: yes
+    state: started
+
+- name: reload postgresql
+  systemd:
+    name: postgresql
+    state: reloaded
+
+- name: restart-sshd
+  systemd:
+    name: sshd
+    state: restarted

@@ -1,0 +1,21 @@
+## Конфигурим zabbix-agent Centos
+- name: configure-zabbix-agent
+  template:
+    src: centos/zabbix_agentd.conf.j2
+    dest: /etc/zabbix_agentd.conf
+  when:
+    ansible_os_family == "RedHat"
+  notify: 
+    - start-zabbix-agent
+    - restart-zabbix-agent
+
+## Конфигурим zabbix-agent Debian
+- name: configure-zabbix-agent
+  template:
+    src: debian/zabbix_agentd.conf.j2
+    dest: /etc/zabbix/zabbix_agentd.conf
+  when:
+    ansible_os_family == "Debian"
+  notify: 
+    - start-zabbix-agent
+    - restart-zabbix-agent

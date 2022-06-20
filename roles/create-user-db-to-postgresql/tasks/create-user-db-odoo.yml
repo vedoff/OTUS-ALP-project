@@ -1,0 +1,34 @@
+## Создаем пользователя в базе postgresql
+- name: Create zabbix user, set MD5-hashed password
+  postgresql_user:
+    name: odoo
+    encrypted: yes
+    password: '123456'
+    role_attr_flags: CREATEDB
+
+# ## Создаем базу postgresql
+# - name: create db postgresql
+#   postgresql_db:
+#     name: odoo
+    # encoding: UTF-8
+    # template: template0
+
+# - name: Create a new database with name "acme" and specific encoding and locale # settings.
+#   postgresql_db:
+#     name: acme
+#     encoding: UTF-8
+#     # lc_collate: de_DE.UTF-8
+#     # lc_ctype: de_DE.UTF-8
+#     template: template0
+
+# - name: Create zabbix user, set MD5-hashed password
+#   postgresql_user:
+#     name: test_new
+#     encrypted: yes
+#     password: 1qaz2wsx
+#     role_attr_flags: CREATEDB,NOSUPERUSER
+
+# - name: create data to db zabbix
+#   command:
+#     cmd: zcat /usr/share/doc/zabbix-sql-scripts/postgresql/server.sql.gz | psql -h 192.168.56.51 zabbix zabbix
+#     cmd: zcat /usr/share/doc/zabbix-server-pgsql/postgresql/create.sql.gz | psql -h 192.168.56.51 zabbix zabbix/create.sql.gz | psql -h 192.168.56.51 zabbix zabbix 

@@ -1,0 +1,11 @@
+# Настраиваем конфиги для бекапа баз
+
+## Настройка конфига barman для pgnode-m
+- name: install config barman for pgnode-m
+  copy:
+    src: pgnode-m.conf
+    dest: /etc/barman.d/pgnode-m.conf
+    owner: root
+    group: root
+    mode: '0644'
+    

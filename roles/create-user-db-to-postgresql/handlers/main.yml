@@ -1,0 +1,11 @@
+---
+## Перезапуск службы postgresql
+- name: restart postgresql
+  systemd:
+    name: postgresql
+    state: restarted
+
+# Применение конфига после изменения
+- name: reload config postgresql
+  postgresql_query:
+    query: SELECT pg_reload_conf();

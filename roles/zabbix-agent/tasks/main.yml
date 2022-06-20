@@ -1,0 +1,7 @@
+---
+# tasks file for zabbix-client
+- name: import install-zabbix-agent.yml
+  import_tasks: install-zabbix-agent.yml
+
+- name: import configure-zabbix-agent.yml
+  import_tasks: configure-zabbix-agent.yml

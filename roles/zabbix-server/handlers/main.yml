@@ -1,0 +1,17 @@
+---
+# handlers file for configure-zabbix-server
+- name: start zabbix-server
+  systemd:
+    name: zabbix-server
+    enabled: yes
+    state: started
+
+- name: restart zabbix-server
+  systemd:
+    name: zabbix-server
+    state: restarted
+
+- name: restart apache2
+  systemd:
+    name: apache2
+    state: restarted

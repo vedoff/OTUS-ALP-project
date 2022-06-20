@@ -1,0 +1,55 @@
+---
+## Добавление юзера 
+- name: add user
+  user:
+    name: borg
+    password: '$6$Xq4HJ/2bINTtAMEh$2eLhdYUOne7VrLBlXfSvUIylm3BxS.jGIPWlE7wHhzTB9fmMtZt84VyBrSGNNpcpSto0XUe70QFQo44NYFtE01'
+    update_password: always
+    
+## Создание директории backup 
+- name: Create folder /var/Backuprepo
+  file:
+    path: /var/Backuprepo
+    owner: "{{ owner_borg }}"
+    group: "{{ group_borg }}"
+    mode: '0755'
+    state: directory
+## Создание директории ssh 
+- name: Create ssh folder key
+  file:
+    path: /home/borg/.ssh
+    owner: "{{ owner_borg }}"
+    group: "{{ group_borg }}"
+    mode: '0700'
+    state: directory
+
+## Создание файла ключей 
+- name: Create ssh file key
+  file:
+    path: /home/borg/.ssh/authorized_keys
+    owner: "{{ owner_borg }}"
+    group: "{{ group_borg }}"
+    mode: '0600'
+    state: touch
+
+# ## Скопируем скрипт подготовки диска 
+# - name: copy script prepare disk
+#   copy: 
+#     src: add-hdd.sh
+#     dest: /tmp/
+#     owner: "vagrant"
+#     group: "vagrant"
+#     mode: '0700'
+
+# ## Выполнение скрипта: Добавление и монтирование диска в /var/backup
+# - name: add hdd mount /var/Backuprepo
+#   command: /tmp/add-hdd.sh
+
+## Создание директории backup 
+- name: Create folder backup
+  file:
+    path: /var/Backuprepo/backup
+    owner: "{{ owner_borg }}"
+    group: "{{ group_borg }}"
+    mode: '0755'
+    state: directory

@@ -1,0 +1,16 @@
+## Установка zabbix-client
+- name: install zabbix-client
+  apt:
+    name: zabbix-agent
+    state: latest
+    update_cache: yes
+  when:
+    ansible_os_family == "Debian"
+
+- name: install zabbix-client
+  yum:
+    name: zabbix-agent
+    state: latest
+    update_cache: yes
+  when:
+    ansible_os_family == "RedHat"

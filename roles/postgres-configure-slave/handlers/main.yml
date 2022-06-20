@@ -1,0 +1,7 @@
+---
+# handlers file for postgres-create-slave
+## Перезапуск службы postgresql
+- name: restart postgresql
+  systemd:
+    name: postgresql
+    state: restarted

@@ -1,0 +1,6 @@
+---
+- hosts: postgre
+  #become: yes
+  remote_user: postgres
+  roles:
+    - create-user-db-to-postgresql

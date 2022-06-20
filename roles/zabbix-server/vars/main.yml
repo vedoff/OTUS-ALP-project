@@ -1,0 +1,12 @@
+---
+# vars file for configure-zabbix-server
+DBHost: '192.168.56.51'
+DBName: zabbix 
+DBUser: zabbix 
+DBPassword: '1qaz2wsx'
+DBPort: '5432'
+LogFile: '/var/log/zabbix/zabbix_server.log'
+timezone: 'Europe/Kaliningrad'
+
+package_url: 'https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-2+debian11_all.deb'
+package_name: 'zabbix-release_5.0-2+debian11_all.deb'

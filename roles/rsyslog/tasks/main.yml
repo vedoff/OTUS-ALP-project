@@ -1,0 +1,9 @@
+---
+## Подключаем файл конфигурации rsyslog
+- name: Import configure file rsyslog
+  import_tasks: rsyslog-configure-server.yml
+  tags: server
+
+- name: Import configure file rsyslog
+  import_tasks: rsyslog-configure-client.yml
+  tags: client

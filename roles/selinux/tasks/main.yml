@@ -1,0 +1,12 @@
+---
+## Подключаем таску конфигурирования selinux
+- name: Import configure file for selinux
+  import_tasks: seconfigure.yml
+
+## Подключаем таску установки утилит для работы с selinux
+- name: Install utils work for selinux
+  import_tasks: installseutils.yml
+
+## Разрешаем порт в selinux
+- name: configure semanage port 
+  import_tasks: semanage.yml

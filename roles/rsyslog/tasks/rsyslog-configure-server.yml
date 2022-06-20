@@ -1,0 +1,7 @@
+---
+- name: configure rsyslog
+  template:
+    src: rsyslog-conf.j2
+    dest: /etc/rsyslog.conf
+  notify:
+    - restart-rsyslog

@@ -1,0 +1,24 @@
+# Установка Zabbix
+- name: Download my_package
+  get_url: 
+    url="{{ package_url }}"
+    dest="/tmp/{{ package_name }}"
+  #when: package_check_deb}}.rc == 1
+
+- name: Install package zabbix
+  apt: deb="/tmp/{{ package_name }}"
+#   when: package_check_deb.rc == 1
+
+- name: install-zabbix-server
+  apt:
+    name: 
+      - zabbix-server-pgsql
+      - zabbix-frontend-php
+      - zabbix-apache-conf
+      # - zabbix-sql-scripts 
+      - zabbix-agent
+      - php7.4-pgsql
+      - postgresql-client-13
+      - mc
+    state: latest
+    update_cache: yes

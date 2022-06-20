@@ -1,0 +1,13 @@
+---
+# tasks file for configure-borg-backup-server
+## Подключаем файл для установки borgbackup
+- name: Import install tasks install borgbackup
+  import_tasks: install_borgbackup.yml
+
+  ## Подключаем файл конфигурирования backup-server
+- name: Import configure-borg-backup-server
+  import_tasks: configure_borgbackup_server.yml
+
+## Подключаем файл конфигурирования borgbackup_client
+- name: Import file configure ssh service
+  import_tasks: configure_borgbackup_ssh_service.yml

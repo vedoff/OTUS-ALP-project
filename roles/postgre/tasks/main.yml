@@ -1,0 +1,34 @@
+---
+# tasks file for postgre 
+- name: import install-postgre.yml
+  import_tasks: install-postgresql.yml
+  tags: install
+
+- name: import add-password-user-postgres.yml
+  import_tasks: add-password-user-postgres.yml
+  tags: addpass
+
+- name: import add-pgpass.yml
+  import_tasks: add-pgpass.yml
+  tags: pgpass
+
+- name: import configure-postgre.yml
+  import_tasks: configure-postgresql.yml
+  tags: config
+
+- name: import configure-sshd_config.yml
+  import_tasks: configure-sshd_config.yml
+  tags: sshd
+  
+- name: import configure-main-pg-slave.yml
+  import_tasks: configure-main-pg-slave.yml
+  tags: main
+
+# - name: import create-slot-pg-slave.yml
+#   import_tasks: create-slot-pg-slave.yml
+#   tags: slot
+
+
+# - name: import createdb-postgresql.yml
+#   import_tasks: createdb-postgresql.yml
+#   tags: createdb

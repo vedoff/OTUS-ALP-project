@@ -1,0 +1,6 @@
+- name: redirect haproxy tcp port 8069
+  community.general.seport:
+    ports: '{{ se_port }}'
+    proto: tcp
+    setype: http_port_t
+    state: present
