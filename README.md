@@ -63,6 +63,7 @@
 `cd /root` \
 `ssh-keygen` \
 `cd .ssh/`
+
 --------------------------------------------- Передать ключ без ввода пароля (нужно тестить)---------------------------
 `- name: Register ssh key at serverB` \
   `command: ssh-copy-id -i /home/{{user}}/.ssh/id_rsa.pub -o StrictHostKeyChecking=no user@serverB`
@@ -128,7 +129,7 @@
 
 `ansible-playbook install-zabbix-agent.yml`
 
-# 6. Разворачиваем Barman ========================================
+# 6. Разворачиваем Barman 
 
 ### === 1. Устанавливаем требуемые пакеты
 
@@ -201,17 +202,16 @@
 
 `barman switch-wal --archive pgnode-m`
 
-### ================== Вывод всей конфигурации ===============
-
+### ======= Вывод всей конфигурации 
 `barman diagnose`
 
 
-### ================ Создание бекапа
+### ======= Создание бекапа
 
 `barman backup pgnode-m`
 
 
-## =============== Восстановление из беапа последней сделаной копии
+## ====== Восстановление из беапа последней сделаной копии
 
 1. Заходим на сервер postgresql
 2. Останавливаем службу postgresql или тот инстанс который был испорчен если он сам не остановился.
@@ -250,7 +250,7 @@ F5 в браузере на сранице приложения.
 `ansible-playbook configure-bastion.yml -t configure`
 
 
-# 8. Настройка haproxy  ============================================
+# 8. Настройка haproxy
 `ansible-playbook configure-bastion.yml -t haproxy`
 
 Настрока selinux для bastion haproxy включена в отдельную роль role/selinux
@@ -259,7 +259,7 @@ F5 в браузере на сранице приложения.
 Создаем ключи \
 `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/odoo-key.key -out /etc/ssl/certs/odoo-cert.crt`
 
-Обьединяем ключи в pem
+Обьединяем ключи в pem \
 `cat odoo-key.key odoo-cert.crt >> odoo.pem`
 
 # После развертывания получим
