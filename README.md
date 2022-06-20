@@ -1,5 +1,7 @@
 # odoo-project
 ## Развертывание инфраструктуры для обеспечения проекта odoo
+# Схема проекта
+![](https://github.com/vedoff/odoo-project/blob/main/pict/Screenshot%20from%202022-06-20%2013-35-04.png)
 ### Разворачиваем виртуалки
 `vagrant up`
 # 1. Устанавливаем базу данных
@@ -259,3 +261,12 @@ F5 в браузере на сранице приложения.
 
 Обьединяем ключи в pem
 `cat odoo-key.key odoo-cert.crt >> odoo.pem`
+
+# После развертывания получим
+### Zabbix допилин за кадром
+   1. Добавлено оповещение в telegram
+   2. Создана карта проекта в самом zabbix
+   
+![](https://github.com/vedoff/odoo-project/blob/main/pict/Screenshot%20from%202022-06-20%2013-40-25.png)
+![](https://github.com/vedoff/odoo-project/blob/main/pict/Screenshot%20from%202022-06-20%2013-43-46.png)
+
