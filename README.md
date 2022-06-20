@@ -55,7 +55,7 @@
 
 `ansible-playbook install-odoo.yml`
 
-База для odoo создается после установки, в postgresql ее создавать руками не нужно.
+База для odoo создается после установки, в `postgresql` ее создавать руками не нужно.
 
 В браузере: 
 
@@ -69,7 +69,7 @@
 
 `ansible-playbook install-borg-client.yml`
 
-Связываем сервер и клиент ssh подключением по ключу
+Связываем сервер и клиент `ssh` подключением по ключу
 
 `borg pass = 123456`
 
@@ -92,7 +92,7 @@
 ### === Инициализируем репозиторий
 `borg init --encryption=repokey borg@192.168.56.55:/var/Backuprepo/backup/`
 
-вводим пароль для бекапов кторый также добавлен в сервис systemd borg-backu.service
+вводим пароль для бекапов кторый также добавлен в сервис `systemd borg-backup.service`
 
 `borg create --stats --list borg@192.168.56.55:/var/Backuprepo/backup/::"oddo-{now:%Y-%m-%d_%H:%M:%S}" /var/lib/odoo`
 
@@ -104,10 +104,9 @@
 На клиенте: \
 Бекапили файлы odoo \
 `vagrant ssh backupfile` \
-Переходим в корень системы
-
-`cd /`
-
+`sudo su` \
+Переходим в корень системы \
+`cd /` \
 запускаем скрипт который был скопирован ранее при развертывании \
 После запуска скрипт выдаст список бекапов, копируем требуемое время, вставляем в поле, продолжаем, вводя пароли на бекап (123456)
 
@@ -139,7 +138,7 @@
 
 6. `ansible-playbook install-zabbix-server.yml -t reconfig`
 
-В браузере подключаемся к серверу мониторинга, проходим мастер инициализации.
+В браузере подключаемся к серверу мониторинга, проходим мастер инициализации. \
 `192.168.56.57/zabbix`
 
 === Инициализация базы в ручную если потребуется \
@@ -237,7 +236,7 @@
 2. Останавливаем службу postgresql или тот инстанс который был испорчен если он сам не остановился.
 
 ### ======= Пример:
-
+su - barman
 #### === Проверяем запущен не запущен
 `pg_lsclusters`
 
@@ -271,16 +270,17 @@ F5 в браузере на сранице приложения.
 
 
 # 8. Настройка haproxy
-`ansible-playbook configure-bastion.yml -t haproxy`
-
-Настрока selinux для bastion haproxy включена в отдельную роль role/selinux
-
 ### === Заранее подготовливаем сертификаты
+#### Ключи уже находятся в конфигурацилнных файлах роли. 
 Создаем ключи \
 `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/odoo-key.key -out /etc/ssl/certs/odoo-cert.crt`
 
 Обьединяем ключи в pem \
-`cat odoo-key.key odoo-cert.crt >> odoo.pem`
+`cat odoo-key.key odoo-cert.crt >> odoo.pem` 
+### Запускаем установку
+`ansible-playbook configure-bastion.yml -t haproxy`
+
+Настрока selinux для bastion haproxy включена в отдельную роль role/selinux
 
 # После развертывания получим
 ### Zabbix допилин за кадром
