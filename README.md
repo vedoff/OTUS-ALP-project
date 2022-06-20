@@ -64,7 +64,7 @@
 `ssh-keygen` \
 `cd .ssh/`
 --------------------------------------------- Передать ключ без ввода пароля (нужно тестить)---------------------------
-`- name: Register ssh key at serverB`
+`- name: Register ssh key at serverB` \
   `command: ssh-copy-id -i /home/{{user}}/.ssh/id_rsa.pub -o StrictHostKeyChecking=no user@serverB`
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@
 === Инициализация базы в ручную если потребуется
 `zcat /usr/share/doc/zabbix-server-pgsql/create.sql.gz | psql -h 192.168.56.51 zabbix zabbix`
 
-====== Устанавливаем zabbix-agent
+### ====== Устанавливаем zabbix-agent
 
 `ansible-playbook install-zabbix-agent.yml`
 
@@ -221,14 +221,14 @@
 #### === Проверяем запущен не запущен
 `pg_lsclusters`
 
-Останавливаем кластер если потребуется
+Останавливаем кластер если потребуется \
 `pg_ctlcluster 13 main stop`
 
 ## === Восстанавливаем из бекапа последний сделаный бекап
 На сервере Barman
 
-`barman recover \`
-`--remote-ssh-command "ssh postgres@192.168.56.51" \`
+`barman recover \` \
+`--remote-ssh-command "ssh postgres@192.168.56.51" \` \
 `pgnode-m latest /var/lib/postgresql/13/main`
 
 ## === Переходим на сервер postgresql и запускаем инстанс
@@ -237,8 +237,8 @@
 
 `pg_ctlcluster 13 main restart`
 
-После этого кластер и бызы должы быть воссановлены.
-Проверяем приложение
+После этого кластер и бызы должы быть воссановлены.\
+Проверяем приложение \
 F5 в браузере на сранице приложения.
 
 
@@ -256,7 +256,7 @@ F5 в браузере на сранице приложения.
 Настрока selinux для bastion haproxy включена в отдельную роль role/selinux
 
 ### === Заранее подготовливаем сертификаты
-Создаем ключи
+Создаем ключи \
 `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/odoo-key.key -out /etc/ssl/certs/odoo-cert.crt`
 
 Обьединяем ключи в pem
@@ -266,7 +266,8 @@ F5 в браузере на сранице приложения.
 ### Zabbix допилин за кадром
    1. Добавлено оповещение в telegram
    2. Создана карта проекта в самом zabbix
-   
+ ## Odoo  
 ![](https://github.com/vedoff/odoo-project/blob/main/pict/Screenshot%20from%202022-06-20%2013-40-25.png)
+## Zabbix
 ![](https://github.com/vedoff/odoo-project/blob/main/pict/Screenshot%20from%202022-06-20%2013-43-46.png)
 
