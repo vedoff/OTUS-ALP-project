@@ -1,6 +1,6 @@
 # odoo-project
 ## Развертывание инфраструктуры для обеспечения проекта odoo
-============================= 1. Устанавливаем базу данных
+# 1. Устанавливаем базу данных
 
 ansible-playbook install-postgres.yml -t install
 
@@ -22,7 +22,7 @@ ansible-playbook add-ssh-key-to-postgresuser.yml -t key
 
 ansible-playbook create-pg_replication_slot-slave.yml
 
-============================= Добавляем пользователей в кластер postgresql и создаем базы ==================
+## Добавляем пользователей в кластер postgresql и создаем базы
 
 ansible-playbook create-user-db-to-postgresql.yml -t odoo
 
@@ -30,7 +30,7 @@ ansible-playbook create-user-db-to-postgresql.yml -t zabbix
 
 ansible-playbook create-user-db-to-postgresql.yml -t barman
 
-============================= 2. Устанваливаем odoo
+# 2. Устанваливаем odoo
 
 ansible-playbook install-odoo.yml
 
@@ -42,7 +42,7 @@ ansible-playbook install-odoo.yml
 
 Откроется мастер создания базы, заполняем, на выходе получим приглащение в приложение.
 
-============================== 3. Устанавливаем backup
+# 3. Устанавливаем backup
 
 ansible-playbook install-borg-server.yml
 
@@ -89,7 +89,7 @@ cd /
 sh /root/backup_restore.sh
 
 
-============================ 4. Устанавливаем log server logrotate
+# 4. Устанавливаем log server logrotate
 
 Сконфигурируем сбор логов
 
@@ -97,7 +97,7 @@ ansible-playbook configure-rsyslog.yml -t server
 
 ansible-playbook configure-rsyslog.yml -t client
 
-============================ 5. Настраиваем мониторинг Zabbix 
+# 5. Настраиваем мониторинг Zabbix 
 
 ------------------------------------------------------------------------------------------
 1. ansible-playbook install-zabbix-server.yml -t install
@@ -123,9 +123,9 @@ zcat /usr/share/doc/zabbix-server-pgsql/create.sql.gz | psql -h 192.168.56.51 za
 
 ansible-playbook install-zabbix-agent.yml
 
-================================================ 6. Разворачиваем Barman ========================================
+# 6. Разворачиваем Barman ========================================
 
-===1. Устанавливаем требуемые пакеты
+### === 1. Устанавливаем требуемые пакеты
 
 ansible-playbook install-barman.yml -t install
 
@@ -141,26 +141,26 @@ password user postgres = 1qaz2wsx
 
 $6$Mg9iAn8Ski/1h7ER$JA24vpr21UcriXFesc20ugr.tJyhxFRtK8TxtMKftvAYeFRO69mVucGxauP7i6VTialg.eN6jZoLDz9Kkc1QV/
 
-===2. Создаем пользователей и базы в postgresql
+### === 2. Создаем пользователей и базы в postgresql
 
 ansible-playbook create-user-db-to-postgresql.yml -t barman
 
-!!!===4. Применяем изменения в конфиге
+### ===4. Применяем изменения в конфиге
 
 ansible-playbook reload-config-postgresql.yml -t reload
 
-=== Если потребуется 
+### === Если потребуется 
 
 ansible-playbook restart-config-postgresql.yml -t restart
 
-===5. Добавление ключей для работы бекапа
+### ===5. Добавление ключей для работы бекапа
 
-=== Правим конфиг ssh на Barman
+### === Правим конфиг ssh на Barman
 
 ansible-playbook install-barman.yml -t sshd
 
 
-=============== Создаем ключ ssh в barman
+### === Создаем ключ ssh в barman
 
 su - barman
 
@@ -174,19 +174,19 @@ ssh-copy-id -i id_rsa.pub postgres@192.168.56.51
 
 ansible-playbook install-barman.yml -t pgpass
 
-=============== Создаем ключ ssh в postgres
+### === Создаем ключ ssh в postgres
 
 su - postgres
 
-=== Создаем ключ
+### === Создаем ключ
 ssh-keygen -t rsa -N ''
 
-=== Копируем ключ на сервер barman
+### === Копируем ключ на сервер barman
 
 ssh-copy-id -i id_rsa.pub postgres@192.168.56.58
 
 
-=============== Инициализируем соединение и проверяем
+### === Инициализируем соединение и проверяем
 
 su - barman
 
@@ -196,37 +196,37 @@ barman receive-wal pgnode-m
 
 barman switch-wal --archive pgnode-m
 
-================== Вывод всей конфигурации ===============
+### ================== Вывод всей конфигурации ===============
 
 barman diagnose
 
 
-================ Создание бекапа
+### ================ Создание бекапа
 
 barman backup pgnode-m
 
 
-=============== Восстановление из беапа последней сделаной копии
+## =============== Восстановление из беапа последней сделаной копии
 
 1. Заходим на сервер postgresql
 2. Останавливаем службу postgresql или тот инстанс который был испорчен если он сам не остановился.
 
-======= Пример:
+### ======= Пример:
 
-=== Проверяем запущен не запущен
+#### === Проверяем запущен не запущен
 pg_lsclusters
 
 Останавливаем кластер если потребуется
 pg_ctlcluster 13 main stop
 
-=== Восстанавливаем из бекапа последний сделаный бекап
+## === Восстанавливаем из бекапа последний сделаный бекап
 На сервере Barman
 
 barman recover \
 --remote-ssh-command "ssh postgres@192.168.56.51" \
 pgnode-m latest /var/lib/postgresql/13/main
 
-=== Переходим на сервер postgresql и запускаем инстанс
+## === Переходим на сервер postgresql и запускаем инстанс
 
 su - postgres
 
@@ -238,19 +238,19 @@ F5 в браузере на сранице приложения.
 
 
 
-================================================7. Настройка файервола =========================================
+# 7. Настройка файервола 
 
 ansible-playbook configure-bastion.yml -t install
 
 ansible-playbook configure-bastion.yml -t configure
 
 
-================================================ 8. Настройка haproxy  ============================================
+# 8. Настройка haproxy  ============================================
 ansible-playbook configure-bastion.yml -t haproxy
 
 Настрока selinux для bastion haproxy включена в отдельную роль role/selinux
 
-=== Заранее подготовливаем сертификаты
+### === Заранее подготовливаем сертификаты
 Создаем ключи
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/odoo-key.key -out /etc/ssl/certs/odoo-cert.crt
 
