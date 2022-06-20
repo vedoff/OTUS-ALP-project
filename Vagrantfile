@@ -79,24 +79,24 @@ Vagrant.configure(2) do |config|
         #pgnode.vm.provision "shell", path: "provision/prepare-host.sh"
   end
 
-  # # ======================================= log server ===============================
+  # ======================================= log server ===============================
 
-  # config.vm.define "log-server" do |logsrv|
-  #   # имя виртуальной машины
-  #   logsrv.vm.box = 'centos/7' 
-  #   logsrv.vm.provider "virtualbox" do |vbc|
-  #     vbc.name = "log-server"
-  #   end
-  #   # hostname виртуальной машины
-  #   logsrv.vm.hostname = "log-server"
-  #   # настройки сети
-  #   logsrv.vm.network "private_network", ip: "192.168.56.56"
-  #   logsrv.vm.synced_folder ".", "/vagrant",  
-  #         type: "rsync",
-  #         rsync_auto: "true",
-  #         rsync_exclude: [".git/",".vagrant/",".gitignore","Vagrantfile"]
-  #         #logsrv.vm.provision "shell", path: "provision/prepare-host.sh"
-  # end
+  config.vm.define "log-server" do |logsrv|
+    # имя виртуальной машины
+    logsrv.vm.box = 'centos/7' 
+    logsrv.vm.provider "virtualbox" do |vbc|
+      vbc.name = "log-server"
+    end
+    # hostname виртуальной машины
+    logsrv.vm.hostname = "log-server"
+    # настройки сети
+    logsrv.vm.network "private_network", ip: "192.168.56.56"
+    logsrv.vm.synced_folder ".", "/vagrant",  
+          type: "rsync",
+          rsync_auto: "true",
+          rsync_exclude: [".git/",".vagrant/",".gitignore","Vagrantfile"]
+          #logsrv.vm.provision "shell", path: "provision/prepare-host.sh"
+  end
   
   # ======================================= Zabbix ===============================
 
@@ -118,24 +118,24 @@ Vagrant.configure(2) do |config|
   end
 
 
-  # # # ================================= Backup server ===================================
+  # # ================================= Backup server ===================================
 
-  #   config.vm.define "backupfile" do |backupfile|
-  #   # имя виртуальной машины
-  #   backupfile.vm.box = 'centos/7' 
-  #   backupfile.vm.provider "virtualbox" do |vbc|
-  #     vbc.name = "backupfile"
-  # end
-  #   # hostname виртуальной машины
-  #   backupfile.vm.hostname = "backup"
-  #   # настройки сети
-  #   backupfile.vm.network "private_network", ip: "192.168.56.55"
-  #   backupfile.vm.synced_folder ".", "/vagrant",  
-  #       type: "rsync",
-  #       rsync_auto: "true",
-  #       rsync_exclude: [".git/",".vagrant/",".gitignore","Vagrantfile"]
-  #       #pgnode.vm.provision "shell", path: "provision/prepare-host.sh"
-  #  end
+    config.vm.define "backupfile" do |backupfile|
+    # имя виртуальной машины
+    backupfile.vm.box = 'centos/7' 
+    backupfile.vm.provider "virtualbox" do |vbc|
+      vbc.name = "backupfile"
+  end
+    # hostname виртуальной машины
+    backupfile.vm.hostname = "backup"
+    # настройки сети
+    backupfile.vm.network "private_network", ip: "192.168.56.55"
+    backupfile.vm.synced_folder ".", "/vagrant",  
+        type: "rsync",
+        rsync_auto: "true",
+        rsync_exclude: [".git/",".vagrant/",".gitignore","Vagrantfile"]
+        #pgnode.vm.provision "shell", path: "provision/prepare-host.sh"
+   end
 
   # ======================================= Bastion GW ===============================
 
