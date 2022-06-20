@@ -16,6 +16,6 @@ borg extract borg@192.168.56.55:/var/Backuprepo/backup/::$param
                                                                                                                                                                           
 #else                                                                                                                                                                     
                                                                                                                                                                           
-echo "Восстановление проведено в текущий каталог"                                                                                                                         
+echo "Восстановление проведено"                                                                                                                         
                                                                                                                                                                           
 #fi
