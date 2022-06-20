@@ -34,7 +34,7 @@
 
 `ansible-playbook create-user-db-to-postgresql.yml -t barman`
 
-# 2. Устанваливаем odoo
+# 2. Устанавливаем odoo
 
 `ansible-playbook install-odoo.yml`
 
