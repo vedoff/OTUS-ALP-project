@@ -33,11 +33,11 @@
 
 `ansible-playbook create-user-db-to-postgresql.yml -t replica`
 
-`ansible-playbook install-postgres.yml -t slave -t pgpass`
+`ansible-playbook install-postgres.yml -t pgpass`
 
-`ansible-playbook install-postgres.yml -t slave -t config`
+`ansible-playbook install-postgres.yml -t config`
 
-`ansible-playbook install-postgres.yml -t slave -t main`
+`ansible-playbook install-postgres.yml -t main`
 
 `ansible-playbook add-ssh-key-to-postgresuser.yml -t key`
 
