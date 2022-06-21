@@ -87,13 +87,16 @@
 
 -----------------------------------------------------------------------------------------------------------------------
  
-`ssh-copy-id -i id_rsa.pub -o StrictHostKeyChecking=no borg@192.168.56.55`
+`ssh-copy-id -i id_rsa.pub borg@192.168.56.55`
 
 ### === Инициализируем репозиторий, выполняем на клиенте.
 `borg init --encryption=repokey borg@192.168.56.55:/var/Backuprepo/backup/`
 
 вводим пароль для бекапов кторый также добавлен в сервис `systemd borg-backup.service` 
 ### Создаем файловый бекап odoo
+Запускаем сервис, тем самым проверяем, что он настроен правильно: \
+`systemctl start borg-backup.service` \
+Или запускаем создание бекапа из консоли: \
 `borg create --stats --list borg@192.168.56.55:/var/Backuprepo/backup/::"oddo-{now:%Y-%m-%d_%H:%M:%S}" /var/lib/odoo`
 ### Смотрим, что бекап создан
 `borg list borg@192.168.56.55:/var/Backuprepo/backup/`
