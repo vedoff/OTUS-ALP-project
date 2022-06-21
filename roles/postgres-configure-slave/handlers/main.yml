@@ -5,3 +5,7 @@
   systemd:
     name: postgresql
     state: restarted
+
+- name: restart postgresql cluster
+  command:
+    cmd: pg_ctlcluster 13 main restart

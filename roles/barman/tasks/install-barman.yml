@@ -24,3 +24,21 @@
       - mc
     state: latest
     update_cache: yes
+
+## Копируем скрипт восстановления из бекапа в barman
+- name: copy script backup_restore_latest.sh
+  copy:
+    src: backup_restore_latest.sh
+    dest: /var/lib/barman/
+    owner: "barman"
+    group: "barman"
+    mode: '0644'
+
+## Копируем скрипт восстановления из бекапа в barman
+- name: copy script backup_restore_time_barman.sh
+  copy:
+    src: backup_restore_time_barman.sh
+    dest: /var/lib/barman/
+    owner: "barman"
+    group: "barman"
+    mode: '0644'
