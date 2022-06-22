@@ -1,5 +1,5 @@
-## Установка zabbix-client
-- name: install zabbix-client
+## Установка zabbix-agent
+- name: install zabbix-agent
   apt:
     name: zabbix-agent
     state: latest
@@ -7,7 +7,7 @@
   when:
     ansible_os_family == "Debian"
 
-- name: install zabbix-client
+- name: install zabbix-agent
   yum:
     name: zabbix-agent
     state: latest

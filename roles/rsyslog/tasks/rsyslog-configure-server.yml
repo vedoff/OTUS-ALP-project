@@ -3,5 +3,6 @@
   template:
     src: rsyslog-conf.j2
     dest: /etc/rsyslog.conf
+  when: (ansible_hostname == "log-server")
   notify:
     - restart-rsyslog

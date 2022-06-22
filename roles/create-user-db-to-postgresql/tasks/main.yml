@@ -1,9 +1,5 @@
 ---
 # Создание пользователей и баз в Postgresql
-- name: import add-ssh-key.yml
-  import_tasks: add-ssh-key.yml
-  tags: key
-
 - name: import create-user-db-zabbix.yml
   import_tasks: create-user-db-zabbix.yml
   tags: zabbix
@@ -20,14 +16,14 @@
   import_tasks: create-user-replication.yml
   tags: replica
 
-- name: import configure-all-conf-to-postgresql.yml
-  import_tasks: configure-all-conf-to-postgresql.yml
-  tags: config
+# - name: import configure-all-conf-to-postgresql.yml
+#   import_tasks: configure-all-conf-to-postgresql.yml
+#   tags: config
 
-- name: import reload-config-postgresql.yml
-  import_tasks: reload-config-postgresql.yml
-  tags: reload
+# - name: import reload-config-postgresql.yml
+#   import_tasks: reload-config-postgresql.yml
+#   tags: reload
 
-- name: import restart-cluster-postgresql.yml
-  import_tasks: restart-cluster-postgresql.yml
-  tags: restart
+# - name: import restart-cluster-postgresql.yml
+#   import_tasks: restart-cluster-postgresql.yml
+#   tags: restart

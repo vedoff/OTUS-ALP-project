@@ -1,5 +1,0 @@
----
-- hosts: postgre
-  become: yes
-  roles:
-    - create-user-db-to-postgresql

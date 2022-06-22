@@ -20,4 +20,7 @@
   import_tasks: add-pgpass.yml
   tags: pgpass
 
+- name: import add-ssh-key.yml
+  import_tasks: add-ssh-key.yml
+  tags: sshkey
   

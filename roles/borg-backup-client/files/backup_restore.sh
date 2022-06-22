@@ -12,7 +12,7 @@ echo "Дата восстановления = "$param
                                                                                                                                                                           
 #if [ $param -eq 0 ]                                                                                                                                                      
 #then                                                                                                                                                                                                                                                                                                              
-borg extract borg@192.168.56.55:/var/Backuprepo/backup/::$param                                                                                                           
+borg extract borg@192.168.56.55:/var/Backuprepo/backup/::$param                                                                                                      
                                                                                                                                                                           
 #else                                                                                                                                                                     
                                                                                                                                                                           

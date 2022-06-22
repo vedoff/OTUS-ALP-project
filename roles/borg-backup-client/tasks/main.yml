@@ -11,3 +11,7 @@
 ## Подключаем файл конфигурации borg_service
 - name: Import file borg_service
   import_tasks: borg_service.yml
+
+## Создаем ssh ключи пользователь root
+- name: Import file create_ssh_rsa
+  import_tasks: create_ssh_rsa.yml

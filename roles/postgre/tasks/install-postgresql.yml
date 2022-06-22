@@ -1,6 +1,11 @@
 - name: apt install dep
   apt:
-    name: gnupg2
+    name: 
+      - gnupg2
+      - python3-dev
+      - libpq-dev
+      - python3-psycopg2
+      - mc
     update_cache: yes
 
 ## Установка епозитория

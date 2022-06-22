@@ -25,14 +25,14 @@ Vagrant.configure(2) do |config|
     end
 
   # ================================ postgresql node-01 =================================
-    config.vm.define "pgnode" do |pgnode|
+    config.vm.define "pgnode-m" do |pgnode|
     # имя виртуальной машины
     pgnode.vm.box = 'debian11/v1230.1' 
     pgnode.vm.provider "virtualbox" do |vbc|
-      vbc.name = "pgnode"
+      vbc.name = "pgnode-m"
     end
     # hostname виртуальной машины
-    pgnode.vm.hostname = "pgnode"
+    pgnode.vm.hostname = "pgnode-m"
     # настройки сети
     pgnode.vm.network "private_network", ip: "192.168.56.51"
     pgnode.vm.synced_folder ".", "/vagrant",  

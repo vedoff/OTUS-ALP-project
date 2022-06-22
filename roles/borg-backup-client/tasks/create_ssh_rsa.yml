@@ -1,14 +1,22 @@
 ---
 # Генерим ssh key
-- openssh_keypair:
-    path: /root/.ssh/id_rsa.pub
-    size: 2048
+- name: create ssh folder
+  file:
+    path: /root/.ssh
+    owner: root
+    group: root
+    state: directory
+    mode: '0700'
 
-- name: Set authorized key taken from file
-  authorized_key:
-    user: root
-    state: present
-    key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+- openssh_keypair:
+    owner: root
+    path: /root/.ssh/id_rsa
+
+# - name: Set authorized key taken from file
+#   authorized_key:
+#     user: root
+#     state: present
+#     key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
 
 # - name: copy ssh_key_rsa
 #   command: 'ssh-copy-id -i /home/vagrant/.ssh/borg_ssh_rsa.pub vagrant@192.168.11.160'

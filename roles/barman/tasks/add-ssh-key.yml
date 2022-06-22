@@ -1,0 +1,13 @@
+- name: create ssh folder
+  file:
+    path: /var/lib/barman/.ssh
+    owner: barman
+    group: barman
+    state: directory
+    mode: '0700'
+
+## Создаем ssh ключи для ползователя barman
+- openssh_keypair:
+    owner: barman
+    path: /var/lib/barman/.ssh/id_rsa
+

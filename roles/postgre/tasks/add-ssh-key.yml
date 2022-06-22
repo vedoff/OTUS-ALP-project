@@ -15,6 +15,12 @@
     group: postgres
     mode: '0644'
 
+## Создаем ssh ключи для ползователя postgres
+- openssh_keypair:
+    owner: postgres
+    path: /var/lib/postgresql/.ssh/id_rsa
+
+
 # - name: Set authorized key taken from file
 #   ansible.posix.authorized_key:
 #     user: charlie

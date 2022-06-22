@@ -24,6 +24,9 @@
   import_tasks: configure-main-pg-slave.yml
   tags: main
 
+- name: import add-ssh-key.yml
+  import_tasks: add-ssh-key.yml
+  tags: key
 # - name: import create-slot-pg-slave.yml
 #   import_tasks: create-slot-pg-slave.yml
 #   tags: slot

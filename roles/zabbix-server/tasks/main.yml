@@ -4,6 +4,10 @@
   import_tasks: install-zabbix-server.yml
   tags: install
 
+- name: import add-pgpass.yml
+  import_tasks: add-pgpass.yml
+  tags: pgpass
+
 - name: import inicialize-database-zabbix.yml
   import_tasks: inicialize-database-zabbix.yml
   tags: initbase
@@ -12,10 +16,7 @@
   import_tasks: configure-zabbix-server-conf.yml
   tags: install
 
-- name: import reconfigure-zabbix-server-conf.yml
-  import_tasks: reconfigure-zabbix-server-conf.yml
-  tags: reconfig
+# - name: import reconfigure-zabbix-server-conf.yml
+#   import_tasks: reconfigure-zabbix-server-conf.yml
+#   tags: reconfig
 
-- name: import add-pgpass.yml
-  import_tasks: add-pgpass.yml
-  tags: pgpass
