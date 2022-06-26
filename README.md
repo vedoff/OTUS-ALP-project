@@ -1,4 +1,4 @@
-# odoo-project
+# Выпускной проект курса Administrator Linux Pofessional
 ## Развертывание инфраструктуры для обеспечения проекта odoo
 ### В проекте реализовано
   1. Первоначалное развертывание проекта [Odoo (бывшая Tiny ERP, OpenERP) — ERP- и CRM-система, разрабатываемая бельгийской компанией Odoo S. A. Распространяется по лицензии LGPL](https://ru.wikipedia.org/wiki/Odoo)
