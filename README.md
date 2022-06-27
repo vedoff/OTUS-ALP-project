@@ -22,8 +22,8 @@
 ### Разворачиваем виртуалки
 `vagrant up`
 ## 1. Устанавливаем базу данных
-ansible-playbook install-postgres.yml
-ansible-playbook create-user-db-to-postgresql.yml -t replica
+ansible-playbook install-postgres.yml \
+ansible-playbook create-user-db-to-postgresql.yml -t replica \
 ansible-playbook create-pg_replication_slot-slave.yml
 ### Копируем ключи
 Под пользователем postgres на нодах
